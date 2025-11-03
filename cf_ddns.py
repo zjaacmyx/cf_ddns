@@ -7,7 +7,7 @@ EMAIL     = "你的Cloudflare登录邮箱"   # ⚠️ 这里改成你登录 Clou
 GLOBAL_KEY = "4a2cbf42292cb56d6b3e3828a0c4c03fe3a48"  # 你的 Global API Key
 ZONE_ID   = "5bcd4f03195a971cebd370e70161ed7d"        # Zone ID
 DOMAIN    = "twisp.aack.eu.org"  # 要更新的域名
-CHECK_INTERVAL = 60  # 每次检查间隔秒数
+CHECK_INTERVAL = 5  # 每次检查间隔秒数
 # ===========================================
 
 def get_current_ip():
@@ -75,3 +75,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
