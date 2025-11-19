@@ -13,14 +13,18 @@ sudo apt update -y
 sudo apt install -y python3 python3-pip curl wget ufw iproute2 iptables dos2unix
 
 echo "[2/6] 🐍 安装 Python 依赖..."
-
 apt update
-apt install -y python3-venv python3-full
+apt install -y python3-full python3-venv
 
 python3 -m venv venv
 
-# 不一定要激活环境，直接用 venv 里的 pip 更稳
-./venv/bin/pip install -r requirements.txt
+# 尝试从 requirements.txt 安装，如果不存在就安装主要依赖库
+if [ -f requirements.txt ]; then
+    ./venv/bin/pip install -r requirements.txt
+else
+    echo "⚠ 未检测到 requirements.txt，安装默认依赖包..."
+    ./venv/bin/pip install selenium requests capsolver Pillow webdriver-manager
+fi
 
 echo
 read -p "[3/6] 🌐 请输入要绑定的 Cloudflare 域名 (例如: az-hk-6oj.aack.eu.org): " INPUT_DOMAIN
